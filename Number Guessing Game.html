@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>React 2,4 week1</title>
+    <style></style>
+</head>
+<body>
+    <h1>Number Guessing Game In HTML[0-30]</h1>
+    <div id="messenge" >Please input any number!</div>
+    <input type="number" id="number">
+    <button id="guessButton" onclick="myFunction()">Guess!!</button>
+    <p id="lastComment"></p>
+    <script>
+        var rand= Math.floor(Math.random()*31);
+        console.log("random number: "+ rand);
+        const maxGuesses= 10;
+        var past= "Past guess: <br>";
+        var count= 0;
+        function myFunction(){
+            count++;
+            var finalNumber= rand;
+            var yourNumber= document.getElementById("number").value;
+            if(count<11){
+                if(yourNumber==finalNumber){
+                    document.getElementById("messenge").innerHTML="Congratulations! "+finalNumber+" was the correct number! it took you " + count+ " tries to guess answer.";
+                    document.getElementById("messenge").style.color="green";
+                }   
+                else if(yourNumber<finalNumber){
+                    document.getElementById("messenge").innerHTML="Your guess was too low, guess higher. You have "+(10-count)+ " guesses left."
+                    document.getElementById("messenge").style.color="red";
+                }
+                else {
+                    document.getElementById("messenge").innerHTML="Your guess was too high, guess lower. You have "+(10-count)+ " guesses left."
+                    document.getElementById("messenge").style.color="red";
+                }
+            }
+            past= past+ yourNumber+ "<br>"; 
+            document.getElementById("lastComment").innerHTML=past;
+        }
+    </script>
+</body>
+</html>
